@@ -51,3 +51,27 @@ attach
 mpg <- c(25, 36, 47)
 mpg
 attach(mtcars)
+patientID = c(1, 2, 3, 4)
+patientID
+age = c(25, 34, 28, 52)
+age
+diabetes <- c("Type1", "Type2", "Type1", "Type1")
+diabetes
+status = c("Poor", "Improved", "Excellent", "Poor")
+status
+patientdata = data.frame(patientID,age,diabetes,status)
+patientdata
+Center = c("Air Force Research Laboratory","Arnold Engineering Development Center","Pacific Northwest National Laboratory")
+Status = c("Public")
+table = data.frame('Center','Status')
+table
+table = data.frame(Center,Status)
+table
+patientdata = data.frame(1:4)
+patientdata
+table$center
+patientdata[c('diabetes,'status)]
+patientdata[1:2]
+patientdata
+
+table(patientdata$diabetes,patientdata$status)
