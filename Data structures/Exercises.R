@@ -14,3 +14,8 @@ x = c(1,5,7,8,5)
 table(x)
 sort(table(x))
 names(sort(table(x),decreasing = T))[1]
+Sales = c(10,11,12,13)
+names(sales) = c('Q1','Q2','Q3','Q4')
+x = sample(c('A','P'),size = 30, replace=T, prob = c(0.3,0.7))
+x
+table(x)
