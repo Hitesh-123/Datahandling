@@ -20,3 +20,13 @@ md = reshape2::melt(df1, id=c('rollno','sname','examunit'))
 md
 head(md)
 summary(md)
+md[md$rollno]
+
+# without aggregation ----
+reshape2::dcast(md, rollno + sname ~ variable)
+reshape2::dcast(md,rollno + sname + variable ~ examunit)
+reshape2::acast(md,rollno + sname ~ variable ~ examunit)
+
+
+# Better way to do it
+md2 = reshape2::melt(df1,id.vars = c('rollno','sname','examunit'))
