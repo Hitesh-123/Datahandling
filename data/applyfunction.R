@@ -20,7 +20,7 @@ X
 apply(X,1,sum)  # dimension = 1 : c
 apply(X,1,mean) # dimension = 1 : c
 apply(X,2,sum)  # d
-apply(X, 3, sum) # s
+apply(X,3,sum) # s
 apply(X,c(1,2),sum)  # c & d
 apply(X,c(1,2,3),sum) # original : c d
 apply(X,c(2,3),sum)  # sum over 2 & 3rd d dim : d & s

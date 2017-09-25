@@ -2,7 +2,7 @@
 # 2 coys ; Each coy has 3 depts : Each dept has 4 salesman
 company = c('coy1','coy2')
 department = c('dept1','dept2','dept3')
-salesan = c('salesman1','salesman2','salesman3','salesman4')
+salesman = c('salesman1','salesman2','salesman3','salesman4')
 set.seed(1234)
 sales = ceiling(runif(2*3*4,50,100))
 mean(sales)

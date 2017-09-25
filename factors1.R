@@ -6,7 +6,6 @@ month.abb[1:12]
 month.abb[1:6]
 months1 = factor(months)
 months1
-months2 = factor(months,levels=c('Jan','Feb','March,'April'),ordered = T)
 months2 = factor(months,levels=c('Jan','Feb','March','April'),ordered = T)
 months2
 months2 = factor(months,levels=month.abb[1:12],ordered = T)
@@ -32,12 +31,12 @@ class(fdiabetes)
 fdiabetes = factor(fdiabetes,levels = c(levels(fdiabetes),'Type3'))
 fdiabetes
 levels(fdiabetes)
-levels(diabetes) = c(levels(fdiabetes),'Type4')
+levels(fdiabetes) = c(levels(fdiabetes),'Type4')
 fdiabetes
 levels(fdiabetes)[5] = 'Type5'
 fdiabetes
-levels(diabetes)
-summary(diabetes)
+levels(fdiabetes)
+summary(fdiabetes)
 fdiabetes[4] = 'Type3'
 fdiabetes[5] = 'Type6'
 sum(is.na(fdiabetes))
@@ -45,7 +44,7 @@ table(fdiabetes,exclude = NULL)
 table(fdiabetes,exclude = NA)
 is.na(fdiabetes)
 fdiabetes2 = na.omit(fdiabetes)
-fdiabetes
+fdiabetes2
 gender = c(1,2,1,1,2)
 fgender = factor(gender)
 fgender

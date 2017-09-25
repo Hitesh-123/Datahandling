@@ -27,7 +27,7 @@ fsum2a <- function(x1) {
 }
 x1 = 1:10 ; y1 = 100:200
 
-sum2a <- function(x3, y3) {
+sum2a = function(x3, y3) {
   sumofnos = sum(x3) * mean(y3)
   return(sumofnos)
 }
@@ -54,7 +54,7 @@ circle <- function(pi, r) {
 }
 circle(3.14,2)
 
-areacircle = (pi,r)
+Areaofcircle = (pi,r)
 
 
 

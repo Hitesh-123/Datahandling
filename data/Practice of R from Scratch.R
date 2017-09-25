@@ -132,3 +132,63 @@ names(y)
 y[('vector')]
 y[["hitesh"]] = "mann"
 y
+df2 = read.csv(file='./data/dsstudents2.csv')
+df2
+a = c(1,2,5,6,-2,4)
+a
+b = c("one", "two", 'three')
+b
+c <- c(TRUE, FALSE, T,F,TRUE,FALSE)
+c
+a ; b; c
+mydata = data.frame(col1,col2,col3)
+patientid = c(1,2,3,4)
+patientid
+age = c(25,34,28,52)
+age
+diabetes = c('Type1','Type2','Type1','Type1')
+diabetes
+status = c('Poor','Improved','Excellent','Poor')
+status
+patientdata = data.frame(patientid,age,diabetes,status)
+patientdata
+rollno = c(17010,17045,17012,17087,17057,17056,17032,17084,17078,17018,17013)
+rollno
+sname = c('Achal Kumar','Apoorva Karn','Goldie Sahni','Hitesh Mann','Kaustav Chatterjee','Meena Srisha Valavala','Rashmi Ranjan Mangaraj','Shruti Sinha','Shubham Pujan','Vijay Pal Singh','Lalit Sahni')
+sname
+course = c('PGDDS','PGDDS','PGDDS','PGDDS','MSCDS','PGDDS','MSCDS','PGDDS','PGDDS','PGDDS','PGDDS')
+course
+gender = c('M','F','M','M','M','F','M','F','M','M','M')
+exp =  c(3,3.5,14,5,0,1,1,15,1,3,8)
+hostel =  c(FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE)
+rollno ;sname ; course ; gender ; hostel
+sdata = data.frame(rollno, sname, course, gender, exp, hostel)
+sdata
+sdata$hostel[sdata$rollno==17057] = TRUE
+sdata
+rollno2 = c(10,11,12,13)
+rollno2
+sname2 = c('Achal','Apoorva','Goldie','Hitesh')
+sname2
+gender2 = c('M','F','M','M')
+gender2
+sdata2 = data.frame(rollno2, sname2, gender2)
+sdata2
+colnames(sdata2) = c("rollno1", "name1", "gender1")
+sdata2
+sdata3 = data.frame(rollno3 = rollno2, sname3= sname2,  gender3=gender2)
+sdata3
+diabetes = factor(diabetes)
+diabetes
+status = c('Poor','Improved','Excellent','Poor')
+status = factor(status)
+status
+status = factor(status, ordered=T)
+status
+g = 'My first list'
+g
+h = c(25,26,18,39)
+j = matrix(1:10,nrow=5)
+k = c("one",'two','Three')
+mylist = list(title=g,ages=h,j,k)
+mylist

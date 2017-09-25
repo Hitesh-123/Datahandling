@@ -25,8 +25,8 @@ table(df[,c("Parties","States")])
 table(df[,c("Parties","States")],dnn = list('Political Parties','States of India'))
 xtabs(MPs ~ States + Parties,data = df) # formula method
 xtabs(MPs ~ Parties + States,data = df) # formula method
-statesel = c('up','delhi')  # vector od state names(few)
-states1
+statesel = c('up','delhi')  # vector of state names(few)
+statesel
 xtabs(MPs ~ Parties + States,data = df,subset = States %in% statesel)
 # state %in% statesel
 xtabs(MPs~Parties + States, data = df,subset = States %in% statesel,drop.unused.levels = TRUE)
