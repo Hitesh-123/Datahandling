@@ -1,0 +1,55 @@
+
+trainset = read.csv('./data/train_bigmart.csv', header = T, na.strings = c(""))
+testset = read.csv('./data/test_bigmart.csv', header = T, na.strings = c(""))
+sampleset = read.csv('./data/SampleSubmission.csv', header = T, na.strings = c(""))
+names(trainset)
+str(trainset)
+sum(is.na(trainset$Outlet_Size))
+# EDA
+as.data.frame(colSums(is.na(trainset)))
+library(zoo)
+library(dplyr)
+trainset %>%
+  select(Item_Identifier,Item_Weight) %>%
+  filter(Item_Identifier == "FDG52")
+trainset %>%
+  select(Item_Identifier,Item_Weight) %>%
+  filter(is.na(Item_Weight))
+library(devtools)
+install_github(repo = "modify", username = "skranz")
+library(microbenchmark)
+library(modify)
+modify(trainset,Item_Identifier == "FDG52", Item_Weight = 13.65)
+colSums(is.na(trainset))
+trainset$Item_Fat_Content = recode(trainset$Item_Fat_Content,"reg" = "Regular", "low fat" = "Low Fat", "lf" = "Low Fat")
+trainset$Outlet_Size[is.na(trainset$Outlet_Size) & trainset$Outlet_Type == "Grocery Store"] = "Small"
+trainset$Outlet_Size[is.na(trainset$Outlet_Size) & trainset$Outlet_Type == "Supermarket Type2"] = "Medium"
+trainset$Outlet_Size[is.na(trainset$Outlet_Size) & trainset$Outlet_Type == "Supermarket Type3"] = "Medium"
+trainset$Outlet_Size[is.na(trainset$Outlet_Size) & trainset$Outlet_Location_Type == "Tier 2"] = "Small"
+trainset$Item_Type = as.factor(trainset$Item_Type)
+trainset$Item_Fat_Content = as.factor(trainset$Item_Fat_Content)
+trainset$Outlet_Type = as.factor(trainset$Outlet_Type)
+trainset$Outlet_Location_Type = as.factor(trainset$Outlet_Location_Type)
+trainset$Outlet_Size = as.factor(trainset$Outlet_Size)
+colSums(is.na(trainset))
+str(trainset)
+Model1 = lm(Item_Outlet_Sales~., data = trainset)
+summary(Model1)
+Model2 = lm(Item_Outlet_Sales ~ Item_Identifier + Item_Weight + Item_Fat_Content + Item_Visibility + Item_Type + Item_MRP + Outlet_Identifier + Outlet_Establishment_Year + Outlet_Size + Outlet_Location_Type + Outlet_Type, data = trainset)
+summary(Model2)
+Model3 = lm(Item_Outlet_Sales ~ Item_Weight + Item_Fat_Content + Item_Visibility + Item_Type + Item_MRP + Outlet_Identifier + Outlet_Establishment_Year + Outlet_Size + Outlet_Location_Type + Outlet_Type, data = trainset)
+summary(Model3)
+Model4 = lm(Item_Outlet_Sales ~ Item_MRP + Outlet_Identifier, data = trainset)
+summary(Model4)
+pred = predict(Model4, newdata = testset, type = "response")
+summary(pred)
+confint(Model4, conf.level = 0.95)
+(pred = round(pred,2))
+library(randomForest)
+Predicforest = randomForest(Item_Outlet_Sales ~ Item_MRP + Outlet_Identifier, data = trainset, nodesize = 5)
+summary(Predicforest)
+plot(Predicforest)
+pred1 = predict(Predicforest, newdata = testset, type = "class")
+pred1 = round(pred1,4)
+Solution = data.frame(Item_Identifier = sampleset$Item_Identifier, Outlet_Identifier = sampleset$Outlet_Identifier, Item_Outlet_Sales = pred,check.rows = F)
+write.csv(Solution, file = "SaleOutletPrice.csv",row.names = F)
